@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.30.*
+*Written for `2b-init.md` Generator version 4.32.*
 
 ## What it is
 
@@ -16,7 +16,7 @@ The design suits vaults of hundreds of pages, not millions. At that size the age
 
 - [Obsidian](https://obsidian.md)
 - An AI agent that can read and write files in your vault folder, such as Claude Code, Codex, Cursor or Gemini CLI.
-- Optional but recommended: git, so you can see and undo what the agent changes.
+- Optional but recommended: [git](https://git-scm.com), so you can see and undo what the agent changes. Setup checks for it and offers to set up a repo.
 
 ## Get started
 
@@ -33,17 +33,19 @@ The design suits vaults of hundreds of pages, not millions. At that size the age
    - **Tone:** how the agent should write.
    - **Digest topics:** only if you want web news scans.
 5. **Install the recommended plugins.** The agent lists which are missing. It can't install plugins itself; do that in Obsidian under Settings → Community plugins → Browse. Everything still works without them, just with fewer features.
+6. **Set up version control.** If the vault isn't a git repo yet, the agent recommends one and offers to create it: `git init`, a `.gitignore` for Obsidian's per-device files, and a first commit. Connecting it to GitHub or another remote is up to you. The Obsidian Git plugin can commit and push automatically.
 
 Keep `2b-init.md` in the vault root after setup. It's the reference copy that updates and new modules are read from. It is never the vault's active ruleset.
 
 ## Update an existing vault
 
-When a new release is out:
+Tell your agent: `Run Operation: check-for-updates`.
 
-1. Download the new `2b-init.md` and replace the copy in your vault root.
-2. Tell your agent: `Run Operation: update-vault`.
+It checks this repo's latest release against your vault's `2b-init.md`. If a newer version is out, it shows what changed and asks before downloading it. It then offers to run `update-vault` to apply the changes to your vault.
 
-The agent compares versions and skips anything unchanged. For each changed section it shows you the change and asks before applying it. It also adds any modules an updated module now depends on, asks how to handle content affected by the change, and suggests related modules you might want. It never overwrites anything silently.
+To update by hand instead, download `2b-init.md` from the [latest release](https://github.com/michaelbarone/2b--second-brain/releases/latest), replace the copy in your vault root, and tell your agent `Run Operation: update-vault`.
+
+`update-vault` compares versions and skips anything unchanged. For each changed section it shows you the change and asks before applying it. It also adds any modules an updated module now depends on, asks how to handle content affected by the change, and suggests related modules you might want. It never overwrites anything silently.
 
 To add a module later, run `Operation: add-use-case`.
 
@@ -79,6 +81,7 @@ Tell your agent `Run Operation: <name>`. `Operation: help` lists what's availabl
 | Operation | What it does |
 |---|---|
 | `init-vault` | Run once in a new vault to set it up |
+| `check-for-updates` | Download a newer `2b-init.md` release, then offer `update-vault` |
 | `update-vault` | Pull in changes from a newer `2b-init.md` |
 | `add-use-case` | Add a module to an existing vault |
 
