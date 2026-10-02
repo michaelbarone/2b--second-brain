@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.33.*
+*Written for `2b-init.md` Generator version 4.34.*
 
 ## What it is
 
@@ -121,6 +121,7 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 | Personal CRM / Relationships | People, interactions and follow-ups | `log-interaction` |
 | Meeting Transcript Ingestion | Keeping full meeting transcripts as sources, with decisions and action items pulled out | `ingest-meeting` |
 | Stand-up Comedy | Writing and performing your own material: premises, versioned bits, sets, stage results | `develop-bit`, `feedback-bit`, `research-bit`, `check-prior-use`, `build-set`, `log-set`, `review-burn`, `review-material` |
+| Travel Planning | Planning vacations and road trips, at home or abroad: destinations, routes, stays and activities with cost estimates, dated prep, packing, country checks for international trips, and an itinerary built from your bookings | `plan-trip`, `scout`, `find-routes`, `choose`, `add-booking`, `add-expense`, `build-itinerary`, `pack`, `check-trip`, `trip-brief`, `log-trip` |
 
 **Research modules** (each adds Research, a shared citation system and source list):
 
@@ -154,6 +155,7 @@ Recipes are common module combinations. Name one during setup, for example "set 
 | Personal CRM / Relationship-First | Personal CRM | Meeting Transcript Ingestion |
 | Comedy Writer / Performer | Stand-up Comedy | Content Production, Personal CRM |
 | Investor / Trader Strategy Development | Investment Strategy | Due Diligence, Competitive Intelligence, Opportunity Cost |
+| Travel Planner | Travel Planning | Opportunity Cost, Personal CRM |
 
 ## Recommended plugins
 
