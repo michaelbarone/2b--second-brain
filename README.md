@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.34.*
+*Written for `2b-init.md` Generator version 4.36.*
 
 ## What it is
 
@@ -60,7 +60,7 @@ Every vault has these folders. Modules add their own on top.
 | `Assets/` | Images, screenshots and other attachments |
 | `Wiki/` | The knowledge layer the agent maintains: `Index.md`, `Log.md`, `Entities/`, `Concepts/`, `Summaries/`, and `Arguments/` for open questions and speculation |
 | `Outputs/` | Finished conclusions and deliverables, every claim cited |
-| `Projects/` | Kanban boards for tracking real work |
+| `Projects/` | Kanban boards for tracking real work, one page per project |
 | `Routines/` | Recurring jobs and their last-run status |
 | `Ecosystem.md` | Tools, subscriptions and integrations the vault uses |
 | `Dashboard.md` | Optional overview page, built with `Operation: dashboard` |
@@ -101,8 +101,12 @@ Tell your agent `Run Operation: <name>`. `Operation: help` lists what's availabl
 | `find-open-questions [scope] [focus]` | Find open, unclear or conflicting points in what's been added |
 | `dashboard` | Build or refresh `Dashboard.md` |
 | `plan-day` / `close-day` | Morning plan (due items plus one old item resurfaced) and evening log |
-| `plan-project [board] <topic>` | Scope a project into milestones and move it to In Progress |
-| `new-board <topic>` | Create a separate Projects board |
+| `plan-project [board] <topic>` | Scope a project into milestones and move it to In Progress. For bigger projects it offers milestone dependencies, phases, a budget and a close-out punch list; you only get the ones you accept |
+| `new-board <topic>` | Create a separate Projects board (also used to give a large project a board of its own) |
+| `check-project <project>` | What's ready next, what's waiting, what's overdue, and how the budget looks |
+| `close-project <project>` | Punch list, close-out note, then Done once you confirm |
+| `log-cost <project> <amount> <what>` | Add a committed or paid cost to a project's budget |
+| `log-work <project> <notes>` | Add a dated progress note and tick off what's done |
 | `archive <topic or page>` | Move a finished topic into `Archived/` |
 | `restore <archive>` | Bring an archived topic back |
 | `delete <archive> [files]` | Permanently delete an archive (asks separately to confirm) |
@@ -122,6 +126,7 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 | Meeting Transcript Ingestion | Keeping full meeting transcripts as sources, with decisions and action items pulled out | `ingest-meeting` |
 | Stand-up Comedy | Writing and performing your own material: premises, versioned bits, sets, stage results | `develop-bit`, `feedback-bit`, `research-bit`, `check-prior-use`, `build-set`, `log-set`, `review-burn`, `review-material` |
 | Travel Planning | Planning vacations and road trips, at home or abroad: destinations, routes, stays and activities with cost estimates, dated prep, packing, country checks for international trips, and an itinerary built from your bookings | `plan-trip`, `scout`, `find-routes`, `choose`, `add-booking`, `add-expense`, `build-itinerary`, `pack`, `check-trip`, `trip-brief`, `log-trip` |
+| Physical Projects | Renovations, sheds and garages, vehicle restorations, woodworking, landscaping and moves, as ordinary projects with extras: pages for each home, vehicle or yard that outlive projects, project-type profiles, local rules researched for your area, materials and parts lists, bids, and maintenance hand-off | `add-property`, `check-local`, `weigh-options`, `add-bid`, `compare-bids`, `redate`, plus extra steps in the core project operations |
 
 **Research modules** (each adds Research, a shared citation system and source list):
 
@@ -156,12 +161,13 @@ Recipes are common module combinations. Name one during setup, for example "set 
 | Comedy Writer / Performer | Stand-up Comedy | Content Production, Personal CRM |
 | Investor / Trader Strategy Development | Investment Strategy | Due Diligence, Competitive Intelligence, Opportunity Cost |
 | Travel Planner | Travel Planning | Opportunity Cost, Personal CRM |
+| Home & Physical Projects | Physical Projects | Opportunity Cost, Personal CRM |
 
 ## Recommended plugins
 
 - **Bases** (built into Obsidian) or **Dataview**: live filtered lists and dashboards
 - **Kanban**: shows `Projects/` boards as boards
-- **Tasks**: due dates and repeating items on project milestones
+- **Tasks**: due dates, repeating items and dependencies ("blocked until") on project milestones
 - **Tasks Calendar Wrapper**: calendar view of those due dates
 
 Modules may recommend more, for example PDF++ and a web clipper for research modules. The agent gives you the full list during setup.
@@ -171,4 +177,6 @@ Modules may recommend more, for example PDF++ and a web clipper for research mod
 - **Ingest regularly.** The wiki only grows if sources move out of `Inbox/`.
 - **Use more than one vault** if you have unrelated purposes, such as a personal knowledge base and a work vault. Each vault has its own instructions, so an agent only reads the one you point it at.
 - **Check the Projects board.** Anything waiting on a decision gets a card there, so nothing is lost in `Inbox/`.
+- **Keep small projects small.** A project can be just a goal and a checklist. Add dependencies, phases or a budget only when the work needs them. Park a project on purpose with a resume date (`status: paused`) so reviews don't nag about it.
+- **Research what's local.** Permits, local rules, prices, deposit norms and weather depend on where you are. The agent lists them as research steps for your project instead of guessing.
 - **Speculation goes in `Wiki/Arguments/`.** Ideas move to `Outputs/` only once they're backed by sources.
