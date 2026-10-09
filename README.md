@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.36.*
+*Written for `2b-init.md` Generator version 4.37.*
 
 ## What it is
 
@@ -71,6 +71,7 @@ Other conventions:
 - Tags follow `#type/*`, `#status/*` and `#topic/*`.
 - Dates are always absolute.
 - Standard Obsidian settings and graph colors are applied for you, with your confirmation.
+- Pages you never want shared can carry `publish: false`. This only matters if you use the Vault Publishing module.
 
 ## Operations
 
@@ -127,6 +128,7 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 | Stand-up Comedy | Writing and performing your own material: premises, versioned bits, sets, stage results | `develop-bit`, `feedback-bit`, `research-bit`, `check-prior-use`, `build-set`, `log-set`, `review-burn`, `review-material` |
 | Travel Planning | Planning vacations and road trips, at home or abroad: destinations, routes, stays and activities with cost estimates, dated prep, packing, country checks for international trips, and an itinerary built from your bookings | `plan-trip`, `scout`, `find-routes`, `choose`, `add-booking`, `add-expense`, `build-itinerary`, `pack`, `check-trip`, `trip-brief`, `log-trip` |
 | Physical Projects | Renovations, sheds and garages, vehicle restorations, woodworking, landscaping and moves, as ordinary projects with extras: pages for each home, vehicle or yard that outlive projects, project-type profiles, local rules researched for your area, materials and parts lists, bids, and maintenance hand-off | `add-property`, `check-local`, `weigh-options`, `add-bid`, `compare-bids`, `redate`, plus extra steps in the core project operations |
+| Vault Publishing | Sharing a vault with people who can't open it: exports a dated, self-contained set of files for a Gemini Notebook (formerly NotebookLM), with citations linking to the original sources and a reference page saying what was left out. You upload the files and share the notebook yourself. Works alongside any other module | `publish`, `publish setup` |
 
 **Research modules** (each adds Research, a shared citation system and source list):
 
