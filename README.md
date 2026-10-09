@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.38.*
+*Written for `2b-init.md` Generator version 4.39.*
 
 ## What it is
 
@@ -33,7 +33,7 @@ The design suits vaults of hundreds of pages, not millions. At that size the age
    - **Tone:** how the agent should write.
    - **Digest topics:** only if you want web news scans.
 5. **Install the recommended plugins.** The agent lists which are missing. It can't install plugins itself; do that in Obsidian under Settings → Community plugins → Browse. Everything still works without them, just with fewer features.
-6. **Set up version control.** If the vault isn't a git repo yet, the agent recommends one and offers to create it: `git init`, a `.gitignore` for Obsidian's per-device files, and a first commit. It also gives you the commands to do it yourself, in two copy-and-run sections filled in for your vault: setting up git on your computer (once), and creating this vault's repo, optionally on GitHub. It asks whether a GitHub repo should be public or private. Private is recommended, since a vault usually holds personal notes. A remote is only created on your yes. The Obsidian Git plugin can commit and push automatically.
+6. **Set up version control.** If the vault isn't a git repo yet, the agent recommends one and offers to create it: `git init`, a `.gitignore` for Obsidian's per-device files, and a first commit. It also gives you the commands to do it yourself, in two copy-and-run sections filled in for your vault: setting up git on your computer (once), and creating this vault's repo, optionally on GitHub. It asks whether a GitHub repo should be public or private. Private is recommended, since a vault usually holds personal notes. You see the commands before anything runs, and again in the setup report, marked done or still to run. A GitHub repo is only created when you say yes to that specific question, and the report states whether one was created, public or private, and its name, which matches the vault folder. The Obsidian Git plugin can commit and push automatically.
 
 Keep `2b-init.md` in the vault root after setup. It's the reference copy that updates and new modules are read from. It is never the vault's active ruleset.
 
