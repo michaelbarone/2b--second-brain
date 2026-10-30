@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.40.*
+*Written for `2b-init.md` Generator version 4.41.*
 
 ## What it is
 
@@ -17,6 +17,7 @@ The design suits vaults of hundreds of pages, not millions. At that size the age
 - [Obsidian](https://obsidian.md)
 - An AI agent that can read and write files in your vault folder, such as Claude Code, Codex, Cursor or Gemini CLI.
 - Optional but recommended: [git](https://git-scm.com), so you can see and undo what the agent changes. Setup checks for it and offers to set up a repo.
+- Optional, if you'll ingest YouTube videos: Python, so the agent can fetch transcripts with the `youtube-transcript-api` library (see Recommended tooling).
 
 ## Get started
 
@@ -32,7 +33,7 @@ The design suits vaults of hundreds of pages, not millions. At that size the age
    - **Naming:** whether `Outputs/` should have a more specific name, such as `Playbooks/` or `Findings/`.
    - **Tone:** how the agent should write.
    - **Digest topics:** only if you want web news scans.
-5. **Install the recommended plugins.** The agent lists which are missing. It can't install plugins itself; do that in Obsidian under Settings → Community plugins → Browse. Everything still works without them, just with fewer features.
+5. **Install the recommended plugins.** The agent lists which are missing. It can't install plugins itself; do that in Obsidian under Settings → Community plugins → Browse. Everything still works without them, just with fewer features. It also checks for the YouTube transcript library and offers to install it, only if you say yes.
 6. **Set up version control.** If the vault isn't a git repo yet, the agent recommends one and offers to create it: `git init`, a `.gitignore` for Obsidian's per-device files, and a first commit. It also gives you the commands to do it yourself, in two copy-and-run sections filled in for your vault: setting up git on your computer (once), and creating this vault's repo, optionally on GitHub. It asks whether a GitHub repo should be public or private. Private is recommended, since a vault usually holds personal notes. You see the commands before anything runs, and again in the setup report, marked done or still to run. A GitHub repo is only created when you say yes to that specific question, and the report states whether one was created, public or private, and its name, which matches the vault folder. The Obsidian Git plugin can commit and push automatically.
 
 Keep `2b-init.md` in the vault root after setup. It's the reference copy that updates and new modules are read from. It is never the vault's active ruleset.
@@ -174,6 +175,14 @@ Recipes are common module combinations. Name one during setup, for example "set 
 - **Tasks Calendar Wrapper**: calendar view of those due dates
 
 Modules may recommend more, for example PDF++ and a web clipper for research modules. The agent gives you the full list during setup.
+
+## Recommended tooling
+
+- **youtube-transcript-api** (Python library, not an Obsidian plugin): fetches YouTube captions without a browser or login, so video ingests and watchlist checks get the full transcript. The agent offers to install it with `python -m pip install --user youtube-transcript-api`, during setup or the first time you ingest a video, and only installs it if you say yes. It never installs anything into the vault folder. Without it, the agent tries a browser and then asks you to paste the transcript.
+  - It's unofficial and can stop working when YouTube changes.
+  - YouTube often blocks it on cloud servers; home connections usually work.
+  - Auto-generated captions mishear names, acronyms and numbers, so the agent notes which captions were auto-generated.
+  - Transcripts are saved in 30-second paragraphs, each starting with its timestamp, so claims can be cited to the moment they're made.
 
 ## Tips
 
