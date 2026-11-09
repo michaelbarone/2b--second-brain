@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.41.*
+*Written for `2b-init.md` Generator version 4.42.*
 
 ## What it is
 
@@ -47,6 +47,8 @@ It checks this repo's latest release against your vault's `2b-init.md`. If a new
 To update by hand instead, download `2b-init.md` from the [latest release](https://github.com/michaelbarone/2b--second-brain/releases/latest), replace the copy in your vault root, and tell your agent `Run Operation: update-vault`.
 
 `update-vault` compares versions and skips anything unchanged. For each changed section it shows you the change and asks before applying it. It also adds any modules an updated module now depends on, asks how to handle content affected by the change, and suggests related modules you might want. It never overwrites anything silently.
+
+Your own additions to the rules belong in the `## Vault extensions (local)` section of your vault's `2b-instructions.md`. `update-vault` leaves that section as it is. When an update changes something one of your additions also covers, it shows both and asks whether to keep, drop or rewrite yours. If some of your additions would suit any vault, it offers to write them up as a proposal in `Inbox/` for you to send to this repo.
 
 To add a module later, run `Operation: add-use-case`.
 
@@ -100,6 +102,7 @@ Tell your agent `Run Operation: <name>`. `Operation: help` lists what's availabl
 | `review` | Periodic review of deadlines, stalled items and tools |
 | `digest` | Scan the web for news on your topics and put it in Inbox (never added automatically) |
 | `check-watchlist <playlist or all>` | Check YouTube watchlists for new videos |
+| `check-watchlist back-catalog <channel> [max-size]` | One-off ingest of a channel's existing playlists: small ones in full, larger ones as you choose, confirmed before it starts |
 | `draft <Outputs page> <topic>` | Assemble cited claims into a first draft |
 | `find-open-questions [scope] [focus]` | Find open, unclear or conflicting points in what's been added |
 | `dashboard` | Build or refresh `Dashboard.md` |
@@ -142,7 +145,7 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 | Product Feasibility | Time-boxed investigations of whether something can be built | `run-spike` |
 | Opportunity Cost / Options Comparison | Comparing options, including what each choice rules out | `compare-options` |
 | Due Diligence | Checking a business, investment or acquisition before a go/no-go decision | `raise-issue`, `resolve-issue`, `build-model` |
-| Investment Strategy | Building, testing and grading your own investing rules | `set-profile`, `build-policy`, `import-holdings`, `check-portfolio`, `define-rule`, `add-indicator`, `ingest-backtest`, `import-trades`, `grade-rule`, `review-rules`, `build-rulebook` |
+| Investment Strategy | Building, testing and grading your own investing rules for stocks, ETFs, crypto and, optionally, options. Ideas from sources are staged as numbered candidates before they become rules, and strategies are organized by holding period and long or short | `set-profile`, `build-policy`, `import-holdings`, `check-portfolio`, `define-rule`, `add-indicator`, `ingest-backtest`, `import-trades`, `grade-rule`, `review-rules`, `build-rulebook` |
 
 Due Diligence, Opportunity Cost / Options Comparison and Product Discovery / Decision-Making also add **Projections**, which builds month-by-month cost and revenue forecasts (`build-projection`, `update-projection`). Every assumption is labeled by how well it's supported.
 
@@ -183,6 +186,7 @@ Modules may recommend more, for example PDF++ and a web clipper for research mod
   - YouTube often blocks it on cloud servers; home connections usually work.
   - Auto-generated captions mishear names, acronyms and numbers, so the agent notes which captions were auto-generated.
   - Transcripts are saved in 30-second paragraphs, each starting with its timestamp, so claims can be cited to the moment they're made.
+  - Fetches are spaced out (10 seconds apart by default). If YouTube blocks them partway through a run, the agent waits and retries, then records which videos are still pending and picks them up on the next run.
 
 ## Tips
 
@@ -191,4 +195,5 @@ Modules may recommend more, for example PDF++ and a web clipper for research mod
 - **Check the Projects board.** Anything waiting on a decision gets a card there, so nothing is lost in `Inbox/`.
 - **Keep small projects small.** A project can be just a goal and a checklist. Add dependencies, phases or a budget only when the work needs them. Park a project on purpose with a resume date (`status: paused`) so reviews don't nag about it.
 - **Research what's local.** Permits, local rules, prices, deposit norms and weather depend on where you are. The agent lists them as research steps for your project instead of guessing.
+- **Daily shows and newsletters date quickly.** For a source you follow issue by issue, each summary keeps the dated view ("as of" a date) apart from the methods that last. A newer view replaces an older one without deleting it.
 - **Speculation goes in `Wiki/Arguments/`.** Ideas move to `Outputs/` only once they're backed by sources.
