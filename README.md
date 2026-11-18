@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.42.*
+*Written for `2b-init.md` Generator version 4.43.*
 
 ## What it is
 
@@ -143,11 +143,12 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 | Competitive Intelligence | Tracking how competitors, products or markets change over time | `research-competitor` |
 | Product Discovery / Decision-Making | Deciding what to build, from evidence | `score-idea` |
 | Product Feasibility | Time-boxed investigations of whether something can be built | `run-spike` |
+| Product Requirements | Turning a decision to build into versioned requirements documents (PRDs), broken into epics and tasks a coding agent can work from, and checked again when new research or decisions arrive. Each project gets its own folder; its epics can serve several of its PRDs and stay linked across minor changes. Software and product first; a physical project can opt in with simple checklist tasks | `create-prd`, `update-prd`, `plan-epics`, `audit-prd` |
 | Opportunity Cost / Options Comparison | Comparing options, including what each choice rules out | `compare-options` |
 | Due Diligence | Checking a business, investment or acquisition before a go/no-go decision | `raise-issue`, `resolve-issue`, `build-model` |
 | Investment Strategy | Building, testing and grading your own investing rules for stocks, ETFs, crypto and, optionally, options. Ideas from sources are staged as numbered candidates before they become rules, and strategies are organized by holding period and long or short | `set-profile`, `build-policy`, `import-holdings`, `check-portfolio`, `define-rule`, `add-indicator`, `ingest-backtest`, `import-trades`, `grade-rule`, `review-rules`, `build-rulebook` |
 
-Due Diligence, Opportunity Cost / Options Comparison and Product Discovery / Decision-Making also add **Projections**, which builds month-by-month cost and revenue forecasts (`build-projection`, `update-projection`). Every assumption is labeled by how well it's supported.
+Due Diligence, Opportunity Cost / Options Comparison and Product Discovery / Decision-Making also add **Projections**, which builds month-by-month cost and revenue forecasts (`build-projection`, `update-projection`, `audit-projection`). Every assumption is labeled by how well it's supported, every update says what prompted it, and a projection marked as backing a go/no-go decision says plainly when it isn't solid enough yet. `audit-projection` checks a projection against anything new in the vault without changing it.
 
 Research modules each set a **citation rigor** level: `strict` (every claim cites a source and the exact location in it), `standard` (every claim cites a source) or `light` (citations recommended). If you use several, the vault uses the strictest.
 
@@ -162,7 +163,7 @@ Recipes are common module combinations. Name one during setup, for example "set 
 | Team / Org Knowledge Base + Meetings | Team / Org Knowledge Base, Meeting Transcript Ingestion | Personal CRM |
 | Content Creator Operations | Content Production, Competitive Intelligence | Personal CRM |
 | Competitive / Market Watch | Competitive Intelligence | — |
-| Product Strategy & Roadmap Decisions | Product Discovery, Product Feasibility, Opportunity Cost | Competitive Intelligence |
+| Product Strategy & Roadmap Decisions | Product Discovery, Product Feasibility, Opportunity Cost | Competitive Intelligence, Product Requirements |
 | Investment / Deal Due Diligence | Due Diligence, Meeting Transcript Ingestion | Product Feasibility, Opportunity Cost, Personal CRM |
 | Personal CRM / Relationship-First | Personal CRM | Meeting Transcript Ingestion |
 | Comedy Writer / Performer | Stand-up Comedy | Content Production, Personal CRM |
