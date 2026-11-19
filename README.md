@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.44.*
+*Written for `2b-init.md` Generator version 4.45.*
 
 ## What it is
 
@@ -127,7 +127,7 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 |---|---|---|
 | General Wiki | A broad, growing reference with no pipeline attached | — |
 | Content Production | A recurring content pipeline (video, newsletter, podcast) with sponsors or collaborators | `new-topic`, `prep-piece`, `update-sponsor`, `analyze-performance` |
-| Team / Org Knowledge Base | Shared team memory, including the reasons behind decisions | `check-workflow-currency` |
+| Team / Org Knowledge Base | Shared team memory, including the reasons behind decisions | `compare-sop-to-source` |
 | Personal CRM / Relationships | People, interactions and follow-ups | `log-interaction` |
 | Meeting Transcript Ingestion | Keeping full meeting transcripts as sources, with decisions and action items pulled out | `ingest-meeting` |
 | Stand-up Comedy | Writing and performing your own material: premises, versioned bits, sets, stage results | `develop-bit`, `feedback-bit`, `research-bit`, `check-prior-use`, `build-set`, `log-set`, `review-burn`, `review-material` |
