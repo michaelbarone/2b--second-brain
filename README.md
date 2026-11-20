@@ -2,7 +2,7 @@
 
 An AI agent–run Obsidian second brain. You add sources, and your agent moves them through Raw → Inbox → Wiki → Outputs as cited, interlinked notes. One portable file, `2b-init.md`, sets up each new vault for its use case.
 
-*Written for `2b-init.md` Generator version 4.45.*
+*Written for `2b-init.md` Generator version 4.46.*
 
 ## What it is
 
@@ -30,7 +30,7 @@ The design suits vaults of hundreds of pages, not millions. At that size the age
 4. **Answer the interview.** The agent asks about:
    - **Purpose:** what the vault is for, in your own words.
    - **Modules:** name a recipe (see below) or describe your goal and let the agent suggest one. You confirm the list before anything is built.
-   - **Naming:** whether `Outputs/` should have a more specific name, such as `Playbooks/` or `Findings/`.
+   - **Naming:** whether `Outputs/` should have a more specific name, such as `Playbooks/` or `Findings/`. The name is saved in your vault's settings, so later updates and new modules use it too. It can't be changed after setup.
    - **Tone:** how the agent should write.
    - **Digest topics:** only if you want web news scans.
 5. **Install the recommended plugins.** The agent lists which are missing. It can't install plugins itself; do that in Obsidian under Settings → Community plugins → Browse. Everything still works without them, just with fewer features. It also checks for the YouTube transcript library and offers to install it, only if you say yes.
@@ -46,7 +46,7 @@ It checks this repo's latest release against your vault's `2b-init.md`. If a new
 
 To update by hand instead, download `2b-init.md` from the [latest release](https://github.com/michaelbarone/2b--second-brain/releases/latest), replace the copy in your vault root, and tell your agent `Run Operation: update-vault`.
 
-`update-vault` compares versions and skips anything unchanged. For each changed section it shows you the change and asks before applying it. It also adds any modules an updated module now depends on, asks how to handle content affected by the change, and suggests related modules you might want. It never overwrites anything silently.
+`update-vault` compares versions and skips anything unchanged. For each changed section it works out what the new version changed since the version your vault was built from, and applies only that, so what you chose at setup (purpose, tone, the output folder's name) and the modules' additions stay as they are. It shows you the change and the result and asks before applying it; where your vault and the update changed the same passage, it shows both and asks. It also adds any modules an updated module now depends on, asks how to handle content affected by the change, and suggests related modules you might want. It never overwrites anything silently.
 
 Your own additions to the rules belong in the `## Vault extensions (local)` section of your vault's `2b-instructions.md`. `update-vault` leaves that section as it is. When an update changes something one of your additions also covers, it shows both and asks whether to keep, drop or rewrite yours. If some of your additions would suit any vault, it offers to write them up as a proposal in `Inbox/` for you to send to this repo.
 
@@ -95,7 +95,7 @@ Tell your agent `Run Operation: <name>`. `Operation: help` lists what's availabl
 | Operation | What it does |
 |---|---|
 | `help [module or recipe]` | Module and recipe menu, or the operations available in this vault |
-| `config [key] [value]` | Review or change vault-wide settings: citation rigor, and how often to check the git remote for changes |
+| `config [key] [value]` | Review or change vault-wide settings: citation rigor, and how often to check the git remote for changes. Also shows the output folder's name, which is fixed at setup |
 | `ingest <url or file>` | Add a source: saved to Raw, summarized, then linked into the wiki |
 | `query <question>` | Answer from the wiki, and save the answer if it's new synthesis |
 | `lint` | Check the wiki for broken links, missing tags and other problems |
@@ -151,6 +151,8 @@ Most vaults use one or two. Research and Projections are **base modules**: you n
 Due Diligence, Opportunity Cost / Options Comparison and Product Discovery / Decision-Making also add **Projections**, which builds month-by-month cost and revenue forecasts (`build-projection`, `update-projection`, `audit-projection`). Every assumption is labeled by how well it's supported, every update says what prompted it, and a projection marked as backing a go/no-go decision says plainly when it isn't solid enough yet. `audit-projection` checks a projection against anything new in the vault without changing it.
 
 Research modules each set a **citation rigor** level: `strict` (every claim cites a source and the exact location in it), `standard` (every claim cites a source) or `light` (citations recommended). If you use several, the vault uses the strictest.
+
+Research also treats two kinds of source with care. A vendor's own page, a press release or a company's own plan shows what that party says; a claim that people want something or that it works at scale needs an independent source. A source whose facts change often, such as pricing or API documentation, can be given a re-check interval (`recheck-after`), and the agent captures it again before relying on it once that time has passed.
 
 ## Recipes
 
